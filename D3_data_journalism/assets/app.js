@@ -24,8 +24,27 @@ var svg = d3
 var chartGroup = svg.append("g")
   .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
+
+
 // Initial Params
-var chosenXAxis = "hair_length";
+var chosenXAxis = "poverty";
+var chosenYAxis = "healthcare";
+
+// Import Data and Parse
+d3.csv("data.csv").then(function(censusData){
+    censusData.forEach(function(data) {
+        data.poverty    = +data.poverty;
+        data.healthcare = +data.healthcare;
+        data.age        = +data.age;
+        data.smokes     = +data.smokes;
+        data.obesity    = +data.obesity;
+        data.income     = +data.income;
+      });
+
+
+
+}
+
 
 // function used for updating x-scale var upon click on axis label
 function xScale(hairData, chosenXAxis) {
