@@ -68,11 +68,11 @@ d3.csv("data.csv").then(function(censusData) {
   // Step 5: Create Circles
   // // ==============================
   var circlesGroup = chartGroup.selectAll("circle")
-    .data(stateData)
+    .data(censusData)
     .enter()
     .append("circle")
-    .attr("cx", d => xLinearScale(d.poverty))
-    .attr("cy", d => yLinearScale(d.healthcare))
+    .attr("cx", d => xLinearScale(d.smokes))
+    .attr("cy", d => yLinearScale(d.age))
 
     .attr("r", "12")
     
