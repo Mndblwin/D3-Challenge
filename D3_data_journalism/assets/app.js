@@ -15,7 +15,7 @@ var height = svgHeight - margin.top - margin.bottom;
 // Create an SVG wrapper, append an SVG group that will hold our chart,
 // and shift the latter by left and top margins.
 var svg = d3
-  .select(".scatter")
+  .select("#scatter")
   .append("svg")
   .attr("width", svgWidth)
   .attr("height", svgHeight);
@@ -32,6 +32,7 @@ var chosenYAxis = "age";
 
 // Import Data and Parse
 d3.csv("data.csv").then(function(censusData) {
+    console.log(censusData);
     censusData.forEach(function(data) {
         data.poverty    = +data.poverty;
         data.healthcare = +data.healthcare;
@@ -126,7 +127,7 @@ d3.csv("data.csv").then(function(censusData) {
   }).catch(function (error) {
   console.log(error);
 });
-
+init();
 
 
 
