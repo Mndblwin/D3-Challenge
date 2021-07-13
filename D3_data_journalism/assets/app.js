@@ -39,6 +39,7 @@ d3.csv("data.csv").then(function(censusData) {
         data.smokes     = +data.smokes;
         data.obesity    = +data.obesity;
         data.income     = +data.income;
+        data.abbr       = +data.abbr;
       });
 
 // Step 2: Create scale functions
@@ -86,7 +87,7 @@ d3.csv("data.csv").then(function(censusData) {
     .attr("class", "tooltip")
     .offset([80, -60])
     .html(function (d) {
-      return (`${d.state}<br>Poverty: ${d.poverty}<br>Healthcare: ${d.healthcare}`);
+      return (`${d.abbr}<br>Smokers: ${d.smokes}<br>Age: ${d.age}`);
     });
 
   // Step 7: Create tooltip in the chart
@@ -113,14 +114,14 @@ d3.csv("data.csv").then(function(censusData) {
     .style("fill", "black")
     .style("font", "20px sans-serif")
     .style("font-weight", "bold")
-    .text("People without Healthcare (%)");
+    .text("Number of Smokers (%)");
 
   chartGroup.append("text")
     .attr("transform", `translate(${width / 2}, ${height + margin.top + 30})`)
     .attr("class", "axisText")
     .style("font", "20px sans-serif")
     .style("font-weight", "bold")
-    .text("Poverty (%)");
+    .text("Age of Smokers (%)");
 
   }).catch(function (error) {
   console.log(error);
