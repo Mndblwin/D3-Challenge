@@ -46,11 +46,11 @@ d3.csv("data.csv").then(function(censusData) {
 // Step 2: Create scale functions
   // ==============================
   var xLinearScale = d3.scaleLinear()
-    .domain([0, d3.max(censusData, d => d.smokes)])
-    .range([0, width]);
+    .domain([5, d3.max(censusData, d => d.smokes)])
+    .range([5, width]);
 
   var yLinearScale = d3.scaleLinear()
-    .domain([0, d3.max(censusData, d => d.age)])
+    .domain([10, d3.max(censusData, d => d.age)])
     .range([height, 0]);
 
   // Step 3: Create axis functions
@@ -88,7 +88,7 @@ d3.csv("data.csv").then(function(censusData) {
     .attr("class", "tooltip")
     .offset([80, -60])
     .html(function (d) {
-      return (`${d.abbr}<br>Smokers: ${d.smokes}<br>Age: ${d.age}`);
+      return (`<br>Abbreviations: ${d.abbr}<br>Smokers: ${d.smokes}<br>Age: ${d.age}`);
     });
 
   // Step 7: Create tooltip in the chart
@@ -102,7 +102,7 @@ d3.csv("data.csv").then(function(censusData) {
   })
     // onmouseout event
     .on("mouseout", function (data, index) {
-      toolTip.hide(data);
+      toolTip.hide(data, index);
     });
 
   // Create axes labels
